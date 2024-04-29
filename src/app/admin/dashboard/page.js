@@ -1,27 +1,28 @@
 "use client";
-import { logoutUser } from "@/store/auth/authSlice";
-import { decrement, increment } from "@/store/portfolio/porfolioSlice";
+import { decrement, increment, logout } from "@/store/actions/authAction";
 import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { Button, Card, CardBody, CardText, CardTitle } from "reactstrap";
+import { Button, Card, CardBody, CardText } from "reactstrap";
 
 const page = () => {
   let dispatch = useDispatch();
-  let { counter } = useSelector((state) => state.portfolio);
+  let { counter } = useSelector((state) => state.user);
   const handleIncrement = () => {
-    dispatch(increment());
+    let count = counter + 1;
+    dispatch(increment(count));
   };
 
   const handleDecrement = () => {
-    dispatch(decrement());
+    let count = counter - 1;
+    dispatch(decrement(count));
   };
   let handleToast = () => {
     toast.success("Hello");
   };
   let handleLogout = () => {
-    dispatch(logoutUser());
+    dispatch(logout());
   };
   return (
     <div className="container mt-5">

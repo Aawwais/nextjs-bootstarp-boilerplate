@@ -1,7 +1,9 @@
+import { Spinner } from "reactstrap";
+
 const RefreshLoading = () => {
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="border-t-4 border-blue-500 rounded-full animate-spin h-14 w-14"></div>
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <Spinner color="primary" />
     </div>
   );
 };
